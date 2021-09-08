@@ -1,0 +1,73 @@
+/*
+اللهم صل على نبينا محمد وعلى ال نبينا محمد
+اللهم علم ينتفع به ونؤجر عليه       */
+
+#include<bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+using namespace std;
+void start()
+{
+
+#ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+#endif
+}
+#define  ll long long
+#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+ordered_set os;
+vector<int>data;
+void merge(int a,int b,int c,int d,vector<int>&even,vector<int>&odd)
+{
+int z=0;
+if(even.size()==0||odd.size()==0) return ;
+    while(z<b+d)
+{
+            if(odd.size()==c)
+            data[z]=even[a++];
+          else if (even.size()==a)
+            data[z]=odd[c++];
+          else if(even[a]>odd[c])
+            data[z]=odd[c++];
+        else
+            data[z]=even[a++];
+
+                z++;
+    }
+
+}
+int main()
+{
+    start();
+    int total;
+    cin>>total;
+    vector<int>even,odd;
+    int temp;
+
+    while(total--)
+    {
+        cin>>temp;
+        data.push_back(temp);
+        if(temp%2==0)
+        {
+            even.push_back(temp);
+        }
+        else
+        {
+            odd.push_back(temp);
+        }
+    }
+
+
+    sort(even.begin(),even.end());
+    sort(odd.begin(),odd.end());
+
+    merge(0, even.size(),0, odd.size(),even,odd); //send them sorted
+
+    for(auto x:data) cout<<x<<" ";
+
+
+    return 0;
+}
