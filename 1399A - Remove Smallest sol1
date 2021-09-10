@@ -1,0 +1,73 @@
+/*
+اللهم صل على نبينا محمد وعلى ال نبينا محمد
+اللهم علم ينتفع به ونؤجر عليه       */
+
+#include<bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+using namespace std;
+vector<int>pos;
+vector<int>neg;
+void start()
+{
+#define ll                  long long
+#define inf                  2e18 + 10
+#define N                   1e5
+#define cinn(n)              scanf("%lld", &n)
+#define fr(i,n)             for (ll i=0;i<n;i++)
+#define fr1(i,n)            for(ll i=1;i<=n;i++)
+#define coutt(x)             printf("%lld",x)
+#define endl 	            "\n"
+#define pb                  push_back
+#define asort(a)            sort(a,a+n)
+#define dsort(a)            sort(a,a+n,greater<int>())
+#define vasort(v)         sort(v.begin(), v.end());
+#define vdsort(v)         sort(v.begin(), v.end(),greater<int>());
+#define pn                  printf("\n")
+#define md                  10000007
+#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+
+#ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+#endif
+}
+ordered_set os;
+
+int main()
+{
+    start();
+
+
+    int test_case;
+    cinn(test_case);
+    while(test_case--)
+    {
+        int size,t1;
+cin>>size;
+        ll a=size;
+        vector<int>data;
+        while(size--)
+        {
+
+          cin>>t1;
+            data.pb(t1);
+
+        }
+
+        if(a==1) {cout<<"YES\n"; continue;
+        }
+        int ma=-1e5;
+      sort(data.begin(),data.end());
+      fr(i,a-1)
+      {
+      ma=max(ma,abs(data[i]-data[i+1]));
+      }
+
+      if(ma>1) cout<<"NO\n";
+      else cout<<"YES\n";
+   }
+
+    return 0;
+}
