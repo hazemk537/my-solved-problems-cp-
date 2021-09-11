@@ -1,0 +1,79 @@
+/*
+اللهم صل على نبينا محمد وعلى ال نبينا محمد
+اللهم علم ينتفع به ونؤجر عليه       */
+
+#include<bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+using namespace std;
+void start()
+{
+#define ll                  long long
+#define inf                  2e18 + 10
+#define N                    1e5
+#define cinn(n)              scanf("%lld", &n)
+#define fr(i,n)             for (ll i=0;i<n;i++)
+#define fr1(i,n)            for(ll i=1;i<=n;i++)
+#define coutt(x)             printf("%lld",x)
+#define endl 	            "\n"
+#define pb                  push_back
+#define asort(a)            sort(a,a+n)
+#define agsort(a)            sort(a,a+n,greater<int>())
+#define vsort(v)         sort(v.begin(), v.end());
+#define vgsort(v)         sort(v.begin(), v.end(),greater<int>());
+#define pn                  printf("\n")
+#define md                  10000007
+#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+
+#ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+#endif
+}
+vector<long long>prefix(1000000);
+vector<long long>data(1000000);
+vector<long long>data2;
+
+ll n;
+void prefix_sum(ll size_vector,vector<ll>&data)
+{
+    prefix[0]=data[0];
+    fr1(i,size_vector)
+    {
+        prefix[i]=data[i]+prefix[i-1];
+    }
+}
+ordered_set os;
+int main()
+{
+    start();
+
+
+    int size,n;
+    cin>>size;
+    n=size;
+    int temp;
+    while(size--)
+    {
+
+        cin>>temp;
+        data2.pb(temp);
+
+    }
+
+    int ans=0;
+    ll sum=0;
+    vsort(data2);
+    for(auto s:data2)
+    {
+        if(s>=sum)
+        {
+            ans++;
+            sum+=s;
+
+        }
+    }
+    cout<<ans;
+    return 0;
+}
