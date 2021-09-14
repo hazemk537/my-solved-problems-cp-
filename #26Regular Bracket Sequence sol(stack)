@@ -1,0 +1,41 @@
+/*
+                        ||                     ||
+                        ||                     ||
+                        ||                     ||
+                        ||                     ||
+                          !!!!!!!!!GO!!!!!!!!!!
+                        ||                     ||
+                        ||                     ||
+                        ||                     ||
+                        ||                     ||
+----------------------------------------------------------------------------------------->*/
+#include<iostream>
+#include<set>
+#include<algorithm>
+#include<vector>
+#include<stack>
+#include<deque>
+using namespace std;
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+
+string a; cin>>a;
+
+stack<char>go;
+for(int i=0;i<a.size();++i)
+{
+if(go.empty()) 
+go.push(a[i]);
+else if(a[i]==')'&&go.top()=='(')
+go.pop();
+else
+go.push(a[i]);
+    }
+
+cout<<a.size()-go.size();
+    return 0;
+}
