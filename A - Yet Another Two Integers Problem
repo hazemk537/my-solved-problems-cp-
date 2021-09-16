@@ -57,20 +57,13 @@ ll ans=0;
 int a,b;
 cin>>a>>b;
  int diff=abs(a-b);
- if(diff==0)
- ans=0;
- else
- {
+
  if(diff%10==0)
   ans=diff/10;
   else
     ans=diff/10+1;
+    cout<<ans<<endl;
 }
-cout<<ans<<endl;
-}
-
-
-
 
     return 0;
 }
