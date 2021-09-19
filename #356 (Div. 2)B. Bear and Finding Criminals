@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long 
+
+int main(){
+  
+    int n,a;cin>>n>>a;
+    int arr[n];
+
+    for(int i = 0; i <n; i++){
+        cin>>arr[i];
+    }
+
+    a--;
+    int l = a - 1,r = a+1;
+    int res = arr[a];
+
+    while(l != -1 || r != n){
+
+        if(l == -1){
+            res+=arr[r];
+        }else if(r == n){
+            res+=arr[l];
+        }else{
+            if(arr[l] == arr[r]){
+                res+=arr[l]+arr[r];
+            }
+        }
+
+        if(l>=0){
+            l--;
+        }
+
+        if(r < n){
+            r++;
+        }
+    }
+
+    cout<<res<<"\n";
+
+}
