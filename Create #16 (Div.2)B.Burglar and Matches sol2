@@ -1,0 +1,13 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+int arr[11];
+int main() {
+
+int a,b; cin>>a>>b;
+int s,d,ans=0;
+while(b--){cin>>s>>d;arr[d]+=s;}
+for(int i=10;i>0&&a>0;--i){ans+=min(a,arr[i])*i,a-=arr[i];}
+cout<<ans;
+    return 0;
+}
