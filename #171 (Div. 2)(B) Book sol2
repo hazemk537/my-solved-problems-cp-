@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int total_books,total_time;
+    cin>>total_books>>total_time;
+
+    vector<int>books_time(total_books);
+
+    for(int i=0; i<total_books; ++i)
+        cin>>books_time[i];
+
+
+    pair<int,long long>number_sum;
+    int begin=0,end=0,ans=-1;
+    for(; end!=total_books;)
+    {
+        if(number_sum.second+books_time[end]<=total_time)
+        {
+            number_sum.second+=books_time[end];
+            number_sum.first++;
+            end++;
+        }
+        else
+        {
+            begin++;
+            ans=max(ans,number_sum.first);
+            number_sum.first--;
+            number_sum.second-=books_time[begin-1];
+
+
+        }
+
+    }
+    cout<<max(ans,number_sum.first);
+
+    return 0;
+}
