@@ -1,0 +1,103 @@
+/*//divisble sum
+اللهم صل على نبينا محمد وعلى ال نبينا محمد
+اللهم علم ينتفع به ونؤجر عليه       */
+
+#include<bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+using namespace std;
+void start()
+{
+#define ll                  long long
+#define inf                  2e18 + 10
+#define fr(i,n)             for (ll i=0;i<n;i++)
+#define fr1(i,n)            for(ll i=1;i<=n;i++)
+#define endl 	            "\n"
+#define pb                  push_back
+#define asort(a)            sort(a,a+n)
+#define agsort(a)            sort(a,a+n,greater<int>())
+#define vsort(v)         sort(v.begin(), v.end());
+#define vgsort(v)         sort(v.begin(), v.end(),greater<int>());
+#define pn                  printf("\n")
+#define md                  10000007
+#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+#ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+#endif
+}
+vector<ll>data(1000000);
+ordered_set os;
+void prefix_sum(ll size_vector,vector<ll>&data)
+{
+    vector<ll>prefix(1000000);
+
+    prefix[0]=data[0];
+    fr1(i,size_vector)
+    {
+        prefix[i]=data[i]+prefix[i-1];
+    }
+}
+
+bool is_pair_n_sum_exist_twp(vector<ll>&twop, ll n, ll target)
+{
+    ll first =0,ans=0,last=n-1;
+    while (first < last)
+    {
+        if (twop[first] + twop[last] == target)       return 1;
+        else if (twop[first] + twop[last] < target)first++;//صغير كبره
+        else                last--;//كبير صغره
+    }
+    return ans;
+}
+ll cnt_pairs_their_sum_greater_than_zero_(vector<ll>&data)
+{
+    vsort(data);
+    ll first=0,last=data.size()-1,ans=0;
+
+    while(first<last)
+    {
+        if(data[first]+data[last]>0)
+        {
+            ans+=last-first,last--;
+        }//عنصر صغير نفع مع كبير يبقا الكبير ينفع مع كل الى بينهم
+
+        else first++;
+    }
+    return ans;
+}
+ll bs()
+{
+    ll first=0,last=1e14;
+    while(first<last)
+    {
+        ll mid=(1+first+last)/2;
+        if(true)
+            first=mid;
+        else
+            last=mid-1;
+    }
+    return first;
+}
+int main()
+{
+    start();
+
+ll test_case; cin>>test_case;
+while(test_case--)
+{
+ll n,k; cin>>n>>k;
+/*find the first number bigger than n and divisble by k
+equal ceil((double)n/k)/k which can be reduced to an equation of long long (k+n-1)
+*/
+if(n>k) k=((k+n-1)/k)*k;
+/*if k%2==0 then when we distibute this number on each index ,each index will take k/n  of the number .else will take k/n+1
+this can reduced to a ceil of double ceil((double)k/n)---->reduced to an equation of long long
+(k+n-1)/n*/
+cout<<(k+n-1)/n<<endl;
+
+}
+
+    return 0;
+}
