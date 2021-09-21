@@ -89,7 +89,7 @@ while(test_case--)
 {
 ll n,k; cin>>n>>k;
 /*find the first number bigger than n and divisble by k
-equal ceil((double)n/k)/k which can be reduced to an equation of long long (k+n-1)
+equal ceil((double)n/k)/k which can be reduced to an equation of long long ((k+n-1)/k)*k
 */
 if(n>k) k=((k+n-1)/k)*k;
 /*if k%2==0 then when we distibute this number on each index ,each index will take k/n  of the number .else will take k/n+1
