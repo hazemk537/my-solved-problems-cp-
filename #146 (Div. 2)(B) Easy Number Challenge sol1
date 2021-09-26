@@ -1,0 +1,61 @@
+/*
+اللهم صل على نبينا محمد وعلى ال نبينا محمد
+اللهم علم ينتفع به ونؤجر عليه       */
+
+#include<bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+using namespace std;
+void start()
+{
+#define ll                   long long
+#define inf                  2e18 + 10
+#define fr(i,n)             for (ll i=0;i<n;i++)
+#define fr1(i,n)            for(ll i=1;i<=n;i++)
+#define endl 	            "\n"
+#define pb                  push_back
+#define asort(a)            sort(a,a+n)
+#define agsort(a)            sort(a,a+n,greater<int>())
+#define vsort(v)         sort(v.begin(), v.end());
+#define vgsort(v)         sort(v.begin(), v.end(),greater<int>());
+#define pn                  printf("\n")
+#define mod                  1000000007
+#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+#ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+#endif
+}
+ordered_set os;
+ll cnt_devisors_sqrt (int num)
+{
+    int ans=0,i;
+    for( i=1; i*i<num; ++i)
+    {
+        if(num%i==0) ans+=2;
+    }
+    if(i*i==num) ans++;
+    return ans;
+}
+int main()
+{
+    start();
+//Brute force [a*b*c sqrt(a*b*c)]
+
+    int a,b,c;
+    cin>>a>>b>>c;
+    int ans=0;
+    fr1(i,a)
+    fr1(k,b)
+    fr1(j,c)
+    {
+//this will call function in 1 1 100 & 100 1 1 & 100 1 1 & 1 100 1
+        int d=i*k*j;
+        ans+=cnt_devisors_sqrt(d);
+       ans%=1073741824;
+
+    }
+    cout<<ans;
+    return 0;
+}
