@@ -1,0 +1,63 @@
+/*
+اللهم صل على نبينا محمد وعلى ال نبينا محمد
+اللهم علم ينتفع به ونؤجر عليه       */
+#include<bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+using namespace std;
+void start()
+{
+#define ll                   long long
+#define inf                  2e18 + 10
+#define fr(i,n)             for (ll i=0;i<n;i++)
+#define fr1(i,n)            for(ll i=1;i<=n;i++)
+#define endl 	            "\n"
+#define pb                  push_back
+#define asort(a)            sort(a,a+n)
+#define agsort(a)            sort(a,a+n,greater<int>())
+#define vsort(v)         sort(v.begin(), v.end());
+#define vgsort(v)         sort(v.begin(), v.end(),greater<int>());
+#define pn                  printf("\n")
+#define mod                  1000000007
+#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+#ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+#endif
+}
+ordered_set os;
+int N=1e6;
+vector<int>myfunc(1e7);
+    void seive_primedevisord_sq_nlogsq_n()
+    {
+        myfunc[0]=1e6;
+        myfunc[1]=0;
+
+
+        for(ll i=2; i<=N; ++i)
+            if(!myfunc[i])
+                for(int j=i; j<=N; j+=i)
+                {
+                    int e=0,q=j;
+                    if(q%i==0)
+                    {
+                        myfunc[j]++;
+
+                    }
+
+                }
+    }
+int main()
+{
+    start();
+int n; cin>>n;
+
+seive_primedevisord_sq_nlogsq_n();
+int ans=0;
+
+for(int i=0;i<n+1;++i)
+if(myfunc[i]==2) ans++;
+cout<<ans;
+    return 0;
+}
