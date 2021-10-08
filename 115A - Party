@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<int> arr[2010];
+vector<bool>vis(2e3+10);
+int dfs(int node,int depth)
+{
+    int ret=depth;
+    vis[node]=true;
+    for(auto x:arr[node])
+    {
+        if(vis[x]) continue;
+        ret=max(ret,dfs(x,depth+1));
+    }
+
+    return ret;
+}
+int main()
+{
+    int nodes;
+    cin>>nodes;
+    vector<int>comp;
+        int t1,ret=1;
+    for(int i=1; i<=nodes; ++i)
+    {
+        cin>>t1;
+        if(t1==-1)
+            comp.push_back(i);
+        else
+        {
+            arr[i].push_back(t1);
+            arr[t1].push_back(i);
+        }
+    }
+
+
+        for(auto x:comp)
+        ret=max(ret,dfs(x,1));
+
+    cout<<ret;
+
+
+}
