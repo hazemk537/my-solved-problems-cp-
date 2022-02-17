@@ -1,0 +1,90 @@
+#include<bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+using namespace std;
+void start()
+{
+#define ll                   long long
+#define inf                  2e18 + 10
+#define fr(i,n)             for (ll i=0;i<n;i++)
+#define fr1(i,n)            for(ll i=1;i<=n;i++)
+#define endl 	            "\n"
+#define pb                  push_back
+#define asort(a)            sort(a,a+n)
+#define agsort(a)            sort(a,a+n,greater<int>())
+#define vso   sort(v.begin(), v.end());
+#define vgsort(v)         sort(v.begin(), v.end(),greater<int>());
+#define pn                  printf("\n")
+#define mod                  1000000007
+#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+#ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+#endif
+}
+
+int main()
+{
+    start();
+
+
+string a,b; 
+while(cin>>a>>b)
+{
+	
+//size is a+b-1
+
+		int ans[a.size()+b.size()-1]={0};
+		
+		int s1=a.size();
+		int s2=b.size();
+		//place is i+j
+	for (int i=s2-1;i>=0;--i)
+	{
+		for (int j=s1-1;j>=0;--j)
+		{
+		   ans[i+j]+=(b[i]-'0') * (a[j]-'0');//() ()
+		}
+		   
+}
+int s3=s1+s2-1;
+	for (int i=s3-1;i>0;--i)
+
+{//carry problem
+         
+         if (ans[i]>=10)
+         {
+         ans[i-1]+=ans[i]/10;
+         ans[i]=ans[i]%10;
+                  
+         }
+         
+         
+}
+
+//zero handle
+for (int x=0;x<s3-1;x++)
+ {
+   
+   if (ans[x]!=0 )
+   break;
+   else 
+   ans[x]=-1;
+ }
+  
+ for (int x=0;x<s3;x++)
+ {
+          if (ans[x]!=-1)
+           cout<<ans[x];
+          
+ }
+   cout<<"\n";
+	}
+
+
+
+
+    return 0;
+
+}
